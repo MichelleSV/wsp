@@ -1,9 +1,9 @@
 window.addEventListener("load", function(){
 	var msj = document.getElementById("mensajes");
 	msj.addEventListener("keypress", nuevoMsj);
+	var chat = document.getElementById("chat");
 	function nuevoMsj(e){
 		if (e.keyCode==13 && msj.value.length!==0 && msj.value.trim()){
-			var chat = document.getElementById("chat");
 
 			var contenedor = document.createElement("div");
 			contenedor.classList.add("w-message","w-message-out");
@@ -40,6 +40,15 @@ window.addEventListener("load", function(){
 		imagen.src = nuevaImg;
 		var titulo = document.getElementById("titulo");
 		var nuevoTitle = this.firstElementChild.children[1].innerHTML;
-		titulo.innerHTML = nuevoTitle;
+		titulo.textContent = nuevoTitle;
+
+		var conexion = document.getElementsByClassName("w-users-messages")[0];
+		var ultimaConexion = this.firstElementChild.nextElementSibling.innerHTML;
+		conexion.textContent = ultimaConexion;
+
+		var msjsIn = document.getElementsByClassName("w-message-in");
+		var msjOut = document.getElementsByClassName("w-message-out");
+			msjsIn[i].remove();
+			msjOut[i].remove();
 	}
 });
